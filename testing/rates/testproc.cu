@@ -102,6 +102,8 @@ void runTest(Procedure procedure, dim3 domain, bool verify, const char* procName
 
 	CUDA_CHECK_RETURN(cudaMemcpy(hostB, b, sizeB, cudaMemcpyDeviceToHost));
 
+	CUDA_CHECK_RETURN(cudaEventDestroy(start));
+	CUDA_CHECK_RETURN(cudaEventDestroy(stop));
 	CUDA_CHECK_RETURN(cudaFree((void*) a));
 	CUDA_CHECK_RETURN(cudaFree((void*) b));
 	CUDA_CHECK_RETURN(cudaDeviceReset());
